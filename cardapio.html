@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hambúrgueres de Bunker — Cardápio Digital</title>
+  <link rel="stylesheet" href="cardapio.css" />
+</head>
+<body>
+  <header class="topo">
+    <div class="topo-conteudo">
+      <span class="badge">Aberto • Pedidos pelo Celular</span>
+      <h1>Hambúrgueres de Bunker</h1>
+      <p>Monte seu pedido e envie direto para o atendimento confirmar no WhatsApp.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="categorias" aria-label="Categorias do cardápio">
+      <button type="button" class="cat-btn ativo" data-categoria="todos">Todos</button>
+      <button type="button" class="cat-btn" data-categoria="burgers">Burgers</button>
+      <button type="button" class="cat-btn" data-categoria="acompanhamentos">Acompanhamentos</button>
+      <button type="button" class="cat-btn" data-categoria="bebidas">Bebidas</button>
+    </nav>
+
+    <section id="lista-cardapio" class="grid-cardapio" aria-live="polite"></section>
+
+    <section class="painel-pedido" aria-label="Seu pedido">
+      <h2>Seu Pedido</h2>
+
+      <div id="itens-carrinho" class="carrinho-lista">
+        <p class="carrinho-vazio">Seu carrinho está vazio. Adicione um item acima.</p>
+      </div>
+
+      <div class="resumo-valores">
+        <div class="linha-valor">
+          <span>Subtotal</span>
+          <strong id="valor-subtotal">R$ 0,00</strong>
+        </div>
+        <div class="linha-valor">
+          <span>Taxa de entrega</span>
+          <strong id="valor-entrega">R$ 0,00</strong>
+        </div>
+        <div class="linha-valor total">
+          <span>Total</span>
+          <strong id="valor-total">R$ 0,00</strong>
+        </div>
+      </div>
+
+      <form id="form-pedido" class="form-pedido">
+        <div class="campo">
+          <label for="cliente-nome">Seu nome *</label>
+          <input type="text" id="cliente-nome" name="cliente_nome" placeholder="Ex.: Ana Souza" required />
+        </div>
+
+        <div class="campo">
+          <label for="cliente-telefone">WhatsApp / Telefone *</label>
+          <input type="tel" id="cliente-telefone" name="cliente_telefone" placeholder="Ex.: 21999998888" required />
+        </div>
+
+        <div class="campo">
+          <label for="tipo-entrega">Como deseja receber? *</label>
+          <select id="tipo-entrega" name="tipo_entrega" required>
+            <option value="entrega" selected>Entrega (Delivery)</option>
+            <option value="retirada">Retirada no balcão</option>
+          </select>
+        </div>
+
+        <div class="campo" id="grupo-endereco">
+          <label for="endereco">Endereço completo *</label>
+          <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro, complemento" required />
+        </div>
+
+        <div class="campo">
+          <label for="forma-pagamento">Forma de pagamento *</label>
+          <select id="forma-pagamento" name="forma_pagamento" required>
+            <option value="pix" selected>Pix</option>
+            <option value="cartao">Cartão na entrega/retirada</option>
+            <option value="dinheiro">Dinheiro</option>
+          </select>
+        </div>
+
+        <div class="campo oculto" id="grupo-troco">
+          <label for="troco-para">Precisa de troco para quanto?</label>
+          <input type="number" id="troco-para" name="troco_para" step="0.01" min="0" placeholder="Ex.: 100.00" />
+        </div>
+
+        <button type="submit" id="btn-enviar" class="btn-enviar">
+          Enviar Pedido e Abrir WhatsApp
+        </button>
+
+        <p id="feedback-status" class="feedback" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="cardapio.js"></script>
+</body>
+</html>
